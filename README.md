@@ -27,7 +27,7 @@ make build
 
 2. patch buildroot directory
 ```bash
-cd buildroot/output/build/host-fakeroot-1.20.2/lib
+cd buildroot/output/build/host-fakeroot-1.20.2
 patch -b < STM32F769I-disco_Buildroot/fakeroot_patch/no_STAT_VER.patch
 ```
 
