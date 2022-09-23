@@ -13,3 +13,8 @@ make build
 cd buildroot/output/build/host-m4-1.4.18/lib
 patch -b < STM32F769I-disco_Buildroot/m4_patch/0003-c-stack-stop-using-SIGSTKSZ.patch
 ```
+
+3. build again
+```bash
+make build
+```
