@@ -3,7 +3,7 @@ url_buildroot = https://github.com/buildroot/buildroot.git
 dir_external = $(PREFIX)/STM32F769I-disco_Buildroot
 dir_buildroot = $(PREFIX)/buildroot
 dir_output = $(dir_buildroot)/output
-release_tag = 2020.08
+release_tag = 2020.05
 tftp_dir = /srv/tftp/stm32f769/
 
 bootstrap:
