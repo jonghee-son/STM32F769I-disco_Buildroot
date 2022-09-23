@@ -1,3 +1,24 @@
+From a8ecb387a210412e4752abaab73f6885f374a08e Mon Sep 17 00:00:00 2001
+From: Fabrice Fontaine <fontaine.fabrice@gmail.com>
+Date: Sun, 11 Apr 2021 18:13:10 +0200
+Subject: [PATCH v2,1/1] package/m4: fix build with glibc 2.34
+
+m4 fails to build with glibc 2.34 because SIGSTKSZ is now a run-time
+variable since
+https://sourceware.org/git/?p=glibc.git;a=commitdiff;h=6c57d320484988e87e446e2e60ce42816bf51d53
+
+So backport an upstream patch from gnulib, see:
+https://lists.gnu.org/archive/html/bug-m4/2021-03/msg00015.html
+
+Fixes:
+ - https://bugs.buildroot.org/show_bug.cgi?id=13721
+
+Signed-off-by: Fabrice Fontaine <fontaine.fabrice@gmail.com>
+---
+ .../m4/0003-c-stack-stop-using-SIGSTKSZ.patch | 106 ++++++++++++++++++
+ 1 file changed, 106 insertions(+)
+ create mode 100644 package/m4/0003-c-stack-stop-using-SIGSTKSZ.patch
+
 diff --git a/package/m4/0003-c-stack-stop-using-SIGSTKSZ.patch b/package/m4/0003-c-stack-stop-using-SIGSTKSZ.patch
 new file mode 100644
 index 0000000000..f262fc818e
@@ -110,3 +131,6 @@ index 0000000000..f262fc818e
 +    ACTION should not call longjmp, because this implementation does
 +    not guarantee that it is safe to return to the original stack.
 + 
+-- 
+2.30.2
+
